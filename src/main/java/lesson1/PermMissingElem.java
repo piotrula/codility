@@ -1,6 +1,7 @@
 package lesson1;
 
 /**
+ * https://codility.com/programmers/task/perm_missing_elem
  * 
  * @author piotrek
  *
@@ -36,7 +37,7 @@ public class PermMissingElem {
 				continue;
 			}
 			
-			int secondIndex = A[index] - 1;
+			int secondIndex = buildCorrectIndexFromElement(index, A);
 			swap(index, secondIndex, A);
 			
 		} while (index < A.length);
@@ -46,6 +47,16 @@ public class PermMissingElem {
 		}
 		
 		return ++index;
+	}
+	
+	/**
+	 * 
+	 * @param index
+	 * @param array
+	 * @return
+	 */
+	private int buildCorrectIndexFromElement(int index, int array[]) {
+		return (array[index] - 1);
 	}
 	
 	/**
