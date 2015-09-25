@@ -23,6 +23,15 @@ public class PermCheckTest {
 	}
 	
 	@Test
+	public void testRepeatableElementArray() {
+		int A[] = {1, 1};
+		assertEquals(0, permCheck.solution(A));
+		
+		int B[] = {1, 2, 2};
+		assertEquals(0, permCheck.solution(B));
+	}
+	
+	@Test
 	public void testPermutationArray() {
 		int A[] = {4, 2, 3, 1, 5};
 		assertEquals(1, permCheck.solution(A));

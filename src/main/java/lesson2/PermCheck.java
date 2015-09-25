@@ -16,35 +16,28 @@ public class PermCheck {
 	 */
 	public int solution(int[] A) {
 		
-		/*
 		int index = 0;
 		do {
-			
+
 			int element = A[index];
-			if (element -1 > A.length) {
+		
+			if ((element - 1) > (A.length - 1)) {
 				return 0;
 			}
-			
-			if (A[index] == (element -1)) {
+
+			if (index == (element - 1)) {
 				index++;
 			} else {
+				if (A[index] == A[element - 1]) {
+					return 0; // repeated
+				}
+				
 				swap(index, element - 1, A);
 			}
 			
-			
 		} while(index < A.length);
 		
-		return Integer.MAX_VALUE;
-		*/
-		
-		int max = 0;
-		for (int i = 0; i < A.length; i++) {
-			if (max < A[i]) {
-				max = A[i];
-			}
-		}
-		
-		return (A.length == max ? 1 : 0);
+		return 1;
 	}
 	
 	/**
