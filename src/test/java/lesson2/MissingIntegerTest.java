@@ -21,6 +21,9 @@ public class MissingIntegerTest {
 		
 		int B[] = {100};
 		assertEquals(99, missingInteger.solution(B));
+		
+		int C[] = {1};
+		assertEquals(2, missingInteger.solution(C));
 	}
 
 	@Test
@@ -42,11 +45,17 @@ public class MissingIntegerTest {
 	}
 	
 	@Test
+	public void testSequenceToLarge() {
+		int A[] = {1, 2, 3, 4};
+		assertEquals(5, missingInteger.solution(A));
+	}
+	
+	@Test
 	public void testPositiveElementsArray() {
 		int A[] = {0, 1, 2, 3, 100, 81, 201, 110};
 		assertEquals(4, missingInteger.solution(A));
 		
-		int B[] = {1, 3, 6, 4, 1, 2};
+		int B[] = {1, 3, 6, 4, 1, 2};		
 		assertEquals(5, missingInteger.solution(B));
 	}
 }
