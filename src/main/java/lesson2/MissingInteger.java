@@ -9,67 +9,24 @@ package lesson2;
 public class MissingInteger {
 	
 	/**
-	 * 
+	 *
 	 * @param A
 	 * @return
 	 */
 	public int solution(int[] A) {
-		
-		if (A.length == 1) {
-			if (A[0] <= 0) {
-				return 1;
-			}
-			if (A[0] == 1) {
-				return 2;
-			}
-			
-			if (A[0] > 1) {
-				return --A[0];
-			}
-		}
-		
 		int minVal = min(A);
-		
-		if (minVal == 0) {
-			return 1;
+		switch (minVal) {
+			case 0:
+				return 1;
+			case 1:
+				return findLowestIntSlot(minVal, A);
+			default:
+				return --minVal;
 		}
-		
-		if (minVal > 1) {
-			return --minVal;
-		}
-		
-		if (minVal == 1) {
-			int B[] = new int[A.length];
-			int possible = Integer.MAX_VALUE;
-			for (int i = 0; i < A.length; i++) {
-				int ele = A[i];
-				if (ele > minVal && ele <= A.length) {
-					B[ele - 1] = 1;
-				}
-				
-				if (ele > A.length && possible > ele) {
-					possible = ele;
-				}
-			}
-			
-			for (int i = (minVal); i < B.length; i++) {
-				if (B[i] == 0) {
-					return (i + 1);
-				}
-			}
-			
-			if (possible < Integer.MAX_VALUE) {
-				return ++possible;
-			}
-			
-			return B.length + 1;			
-		}
-		
-		return Integer.MAX_VALUE;
 	}
 	
 	/**
-	 * 
+	 *
 	 * @param A
 	 * @return
 	 */
@@ -80,11 +37,43 @@ public class MissingInteger {
 				min = A[i];
 			}
 		}
-		
+
 		if (min == Integer.MAX_VALUE) {
 			min = 0;
 		}
-		
+      
 		return min;
+	}
+	
+	/**
+	 *
+	 * @param minVal
+	 * @param array
+	 * @return
+	 */
+	private int findLowestIntSlot(int minVal, int array[]) {
+		int tmpArray[] = new int[array.length];
+		int possibleSlot = Integer.MAX_VALUE;
+
+		for (int i = 0; i < array.length; i++) {
+			int element = array[i];
+			if (element > minVal && element <= array.length) {
+				tmpArray[element - 1] = 1;
+			} else if (element > array.length && possibleSlot > element) {
+				possibleSlot = element;
+			}
+		}
+
+		for (int i = minVal; i < tmpArray.length; i++) {
+			if (tmpArray[i] == 0) {
+				return (i + 1);
+			}
+		}
+
+		if (possibleSlot < Integer.MAX_VALUE) {
+			return ++possibleSlot;
+		}
+
+		return (tmpArray.length + 1);
 	}
 }
