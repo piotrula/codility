@@ -45,7 +45,7 @@ public class MaxCountersTest {
 	
 	@Test
 	public void testNormalSmallArray() {
-		int A[] = {3, 4, 4, 6, 1, 1};
+		int A[] = {3, 4, 4, 6, 1, 4, 4};
 		int N = 5;
 		int AExpected[] = {3, 2, 2, 4, 2};
 		
