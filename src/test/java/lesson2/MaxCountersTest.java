@@ -50,6 +50,11 @@ public class MaxCountersTest {
 		int AExpected[] = {3, 2, 2, 4, 2};
 		
 		assertArrayEquals(AExpected, maxCounters.solution(N, A));
+		
+		int B[] = {3, 4, 4, 6, 1, 6, 4};
+		int NN = 5;
+		int BExpected[] = {3, 2, 2, 4, 2};
+		assertArrayEquals(BExpected, maxCounters.solution(NN, B));
 	}
 
 }
